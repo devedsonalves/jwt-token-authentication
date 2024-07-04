@@ -96,7 +96,7 @@ Para instalar e executar este projeto localmente, siga as etapas abaixo:
 
 ### Dados do Usuário
 
-- **URL**: `/me`
+- **URL**: `/user`
 - **Método**: `GET`
 - **Cabeçalho**:
     ```sh
