@@ -9,34 +9,24 @@ async function getUserByToken(
 ) {
 	const { authorization } = request.headers
 
-	console.log(authorization)
-
 	if (!authorization) {
 		return response.status(403).json({ message: "Invalid authorization" })
 	}
 
 	const token = authorization.split(' ')[1]
 
-	console.log(token)
-
 	const { id } = jwt.verify(
 		token, 
 		process.env.JWT_PASS!
 	) as JwtPayload
 
-	console.log(id)
-
 	const user = await prisma.user.findUnique({ where: { id } })
-
-	console.log(user)
 
 	if (!user) {
 		return response.status(403).json({ message: "Invalid authorization" })
 	}
 
 	const { password: _, ...loggedUser} = user
-
-	console.log(loggedUser)
 
 	return response.json(loggedUser)
 }
