@@ -5,8 +5,8 @@ async function getAllUsers(
   request: Request, 
   response: Response
 ) {
-  const users = await prisma.user.findMany()
-    .then(users => {
+  await prisma.user.findMany()
+    .then((users) => {
       return response.status(200).json(users)
     })
     .catch(() => {
